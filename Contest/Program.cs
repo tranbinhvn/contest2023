@@ -8,19 +8,49 @@ namespace contest
     {
         static void Main(string[] args)
         {
-            int T = int.Parse(Console.ReadLine());
-            List<string> L1 = new List<string>();
-            List<string> L2 = new List<string>();
-            for (int i = 0; i < T; i++)
+            B3();
+            //int T = int.Parse(Console.ReadLine());
+            //List<string> L1 = new List<string>();
+            //List<string> L2 = new List<string>();
+            //for (int i = 0; i < T; i++)
+            //{
+            //    L1.Add(Console.ReadLine());
+            //    L2.Add(Console.ReadLine());
+            //}
+            //for (int i = 0; i < T; i++)
+            //{
+            //    char[] s1 = L1[i].ToCharArray();
+            //    char[] s2 = L2[i].ToCharArray();                
+            //    Console.WriteLine(B4_Process(s1, s2));
+            //}
+        }
+
+        static void B3()
+        {
+            var arr = Array.ConvertAll(Console.ReadLine().Trim().Split(" "), int.Parse);
+            int N = arr[0]; // May
+            int M = arr[1]; // Day mang
+            HashSet<int> uList = new HashSet<int>();
+            for (int i = 0; i < M; i++)
             {
-                L1.Add(Console.ReadLine());
-                L2.Add(Console.ReadLine());
+                var temp = Array.ConvertAll(Console.ReadLine().Trim().Split(" "), int.Parse);
+                uList.Add(temp[0]);
+                uList.Add(temp[1]);
             }
-            for (int i = 0; i < T; i++)
+            if (M >= N-1)
             {
-                char[] s1 = L1[i].ToCharArray();
-                char[] s2 = L2[i].ToCharArray();                
-                Console.WriteLine(B4_Process(s1, s2));
+                if (uList.Count >= N)
+                {
+                    Console.WriteLine(0);
+                }
+                else
+                {
+                    Console.WriteLine(N - uList.Count);
+                }
+            }
+            else
+            {
+                Console.WriteLine(-1);
             }
         }
 
